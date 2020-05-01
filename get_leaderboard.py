@@ -73,13 +73,47 @@ def check(value):
 	elif isinstance(value, dict):
 		isdict(value)
 
+user_input = True
+if user_input:
 #will extract all save files (.zks) to their own folders in cwd, then read each party.json
-# saves_path = os.path.join(os.environ['USERPROFILE'], 'AppData\\LocalLow\\Owlcat Games\\Pathfinder Kingmaker\\Saved Games')
-# files = glob.glob(saves_path + '\\*.zks')
-
-#only open a single file, todo: cli args
-save_file = 'Quick_2.zks'
-files = [os.path.join(os.environ['USERPROFILE'], 'AppData/LocalLow/Owlcat Games/Pathfinder Kingmaker/Saved Games/', save_file)]
+	saves_path = os.path.join(os.environ['USERPROFILE'], 'AppData\\LocalLow\\Owlcat Games\\Pathfinder Kingmaker\\Saved Games')
+	files = glob.glob(saves_path + '\\*.zks')
+	
+	waiting_for_input = True
+	files_cnt = 1
+	while(waiting_for_input):
+		sorted_files = {}
+		for file in files:
+			mtime = os.path.getmtime(file)
+			sorted_files[mtime] = file
+		
+		sorted_files = dict(sorted(sorted_files.items()))
+		
+		for k,v in sorted_files.items():
+			print(f"{files_cnt} - {os.path.basename(v)}")
+			files_cnt += 1
+		
+		print('Enter index to process: ')
+		
+		try:
+			user_sel = input()
+			print(f"user sel: '{user_sel}'")
+			index = int(user_sel)
+			foo = list(sorted_files)[index-1]
+			print(foo)
+			files = [sorted_files[foo]]
+			waiting_for_input = False
+		except Exception as ex:
+			print(ex)
+			if user_sel == 'q' or user_sel == 'x':
+				files = []
+				waiting_for_input = False
+			else:	
+				print('Bad input, try again')
+else:
+	#only open a single file, todo: cli args
+	save_file = 'Quick_2.zks'
+	files = [os.path.join(os.environ['USERPROFILE'], 'AppData/LocalLow/Owlcat Games/Pathfinder Kingmaker/Saved Games/', save_file)]
 
 cnt = 0
 for file in files:
