@@ -33,11 +33,13 @@ classes = {
 	'772c83a25e2268e448e841dcd548235f' : 'Bard',
 	'3c67fb6458752a1419fb8cd4efaf8eaa' : 'Thunder Caller',
 	
-	'00b990c8be2117e45ae6514ee4ef561c' : 'Slayer',
+	'd80a67a264f206e4b8d2fcf7e560d48f' : 'Aldori Defender',
+	'90e4d7da3ccd1a8478411e07e91d5750' : 'Aldori Swordlord',
 	
 	'35a3b7bfc663ac74aa8bb50adfe70813' : 'Blight Druid',
 	
 	'c75e0971973957d4dbad24bc7957e4fb' : 'Sorcerer',
+	'00b990c8be2117e45ae6514ee4ef561c' : 'Sage Sorc',
 	
 	'bfa11238e7ae3544bbeb4d0b92e897ec' : 'Paladin',
 	'fec08c1a3187da549abd6b85f27e4432' : 'Divine Hunter',
